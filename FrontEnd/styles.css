@@ -1,0 +1,648 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-dark: #1e3a8a;
+  --primary-light: #eff6ff;
+  --primary-border: #bfdbfe;
+  --secondary: #475569;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --bg-page: #f1f5f9;
+  --bg-card: #ffffff;
+  --border-color: #e2e8f0;
+  --border-input: #cbd5e1;
+  --border-focus: #2563eb;
+  --radius-lg: 18px;
+  --radius-md: 10px;
+  --radius-sm: 8px;
+  --shadow-card: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  --shadow-popup: 0 20px 25px -5px rgba(15, 23, 42, 0.12), 0 10px 10px -5px rgba(15, 23, 42, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-page);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.06) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(30, 58, 138, 0.06) 0px, transparent 50%);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  line-height: 1.5;
+}
+
+/* Contenedor principal */
+.main-container {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Tarjeta de Formulario */
+.form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 36px 40px;
+  transition: box-shadow 0.3s ease;
+}
+
+@media (max-width: 640px) {
+  .form-card {
+    padding: 24px 20px;
+  }
+}
+
+/* Encabezado del Formulario */
+.form-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.academic-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+  border: 1px solid var(--primary-border);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+.academic-badge svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--primary);
+}
+
+.form-header h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.form-header p {
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Secciones del Formulario */
+.form-section {
+  margin-bottom: 24px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 16px;
+}
+
+.section-title svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--primary);
+}
+
+/* Grupos de campos */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.form-group label span.required {
+  color: #ef4444;
+  margin-left: 2px;
+}
+
+/* Fila de Input con Botón de Editar */
+.input-with-button {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+/* Estilos de inputs */
+.form-control {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  padding: 0 14px;
+  font-family: inherit;
+  font-size: 14.5px;
+  color: var(--text-main);
+  background: #ffffff;
+  border: 1.5px solid var(--border-input);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  background-color: #ffffff;
+}
+
+/* Estado deshabilitado inicial */
+.form-control:disabled {
+  background-color: #f8fafc;
+  color: #64748b;
+  border-color: #e2e8f0;
+  cursor: not-allowed;
+  user-select: none;
+}
+
+/* Estado habilitado / editable */
+.form-control:not(:disabled) {
+  background-color: #ffffff;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.form-control::placeholder {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+/* Botón Editar para cada input */
+.btn-editar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 44px;
+  padding: 0 14px;
+  background-color: #f8fafc;
+  border: 1.5px solid var(--border-input);
+  border-radius: var(--radius-sm);
+  color: #475569;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.btn-editar:hover {
+  background-color: var(--primary-light);
+  border-color: var(--primary-border);
+  color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.btn-editar:active {
+  transform: translateY(0);
+  background-color: #dbeafe;
+}
+
+.btn-editar svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 2;
+  transition: transform 0.2s ease;
+}
+
+.btn-editar:hover svg {
+  transform: scale(1.1);
+}
+
+/* Estado activo / botón Listo al editar */
+.btn-editar.btn-guardar {
+  background-color: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #059669;
+}
+
+.btn-editar.btn-guardar:hover {
+  background-color: #d1fae5;
+  border-color: #6ee7b7;
+  color: #047857;
+}
+
+.btn-editar.btn-guardar svg {
+  stroke: #059669;
+}
+
+/* Date Picker Wrapper & Input */
+.date-picker-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.date-input {
+  cursor: pointer;
+  background: #ffffff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%2364748b" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/></svg>') no-repeat right 14px center;
+  padding-right: 38px;
+}
+
+.date-input:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Contenedor del calendario desplegable */
+.calendar-popup {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 290px;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-popup);
+  padding: 16px;
+  z-index: 100;
+  user-select: none;
+  animation: fadeInDown 0.15s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.calendar-popup.open {
+  display: block;
+}
+
+/* Cabecera del Calendario */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.calendar-header button {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.calendar-header button:hover {
+  background: #e2e8f0;
+  color: var(--text-main);
+}
+
+.month-title {
+  font-weight: 600;
+  font-size: 14.5px;
+  text-transform: capitalize;
+  color: var(--text-main);
+}
+
+/* Grilla de días */
+.weekdays, .days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  gap: 4px;
+}
+
+.weekdays {
+  margin-bottom: 6px;
+}
+
+.weekdays span {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding-bottom: 4px;
+}
+
+.days-grid button {
+  border: none;
+  background: transparent;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13.5px;
+  color: var(--text-main);
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.days-grid button:hover:not(:disabled) {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.days-grid button.selected {
+  background: var(--primary) !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.35);
+}
+
+.days-grid button.empty {
+  cursor: default;
+}
+
+/* Aviso Institucional */
+.academic-notice {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin: 22px 0 24px 0;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13px;
+  color: var(--secondary);
+  line-height: 1.45;
+}
+
+.academic-notice svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--primary);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Botón de Envío */
+.btn-submit {
+  width: 100%;
+  height: 48px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-submit:hover {
+  background: linear-gradient(135deg, var(--primary-hover), var(--primary-dark));
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+}
+
+.btn-submit svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+/* ========================================================
+   Estilos específicos para gracias.html (Página de Agradecimiento)
+   ======================================================== */
+.thankyou-card {
+  text-align: center;
+  padding: 44px 36px;
+}
+
+.success-icon-wrapper {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 20px auto;
+  background-color: #ecfdf5;
+  border: 2px solid #a7f3d0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #059669;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.15);
+  animation: scaleIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.success-icon-wrapper svg {
+  width: 38px;
+  height: 38px;
+  stroke-width: 2.5;
+}
+
+.thankyou-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 10px;
+}
+
+.thankyou-subtitle {
+  font-size: 15px;
+  color: var(--text-muted);
+  max-width: 480px;
+  margin: 0 auto 24px auto;
+  line-height: 1.6;
+}
+
+/* Cuadro de Notificación */
+.notification-card {
+  background-color: #eff6ff;
+  border: 1.5px solid #bfdbfe;
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  text-align: left;
+  margin-bottom: 26px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.notification-card .notif-icon {
+  width: 24px;
+  height: 24px;
+  stroke: var(--primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.notification-content h3 {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 4px;
+}
+
+.notification-content p {
+  font-size: 13.5px;
+  color: #1e40af;
+  line-height: 1.5;
+}
+
+/* Pasos del Proceso Académico */
+.academic-steps {
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
+  margin-bottom: 28px;
+  text-align: left;
+}
+
+.steps-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 14px;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.step-number {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.step-item.completed .step-number {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.step-item.active .step-number {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.step-item.pending .step-number {
+  background-color: #f1f5f9;
+  color: #94a3b8;
+}
+
+.step-text {
+  font-size: 13.5px;
+}
+
+.step-text strong {
+  display: block;
+  color: var(--text-main);
+  font-size: 13.5px;
+}
+
+.step-text span {
+  color: var(--text-muted);
+  font-size: 12.5px;
+}
+
+/* Botón Volver */
+.btn-secondary-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background-color: #ffffff;
+  color: var(--primary);
+  border: 1.5px solid var(--primary-border);
+  border-radius: var(--radius-md);
+  font-size: 14.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary-link:hover {
+  background-color: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-secondary-link svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2;
+}
